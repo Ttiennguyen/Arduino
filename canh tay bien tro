@@ -1,0 +1,79 @@
+#include <Servo.h>
+
+int servoPin_1 = 3;
+int servoPin_2 = 5;
+int servoPin_3 = 6;
+int servoPin_4 = 9;
+int servoPin_5 = 10;
+int servoPin_6 = 11;
+
+// giá trị điểm khi xoay servo
+int value_1 = 0; 
+int value_2 = 0;
+int value_3 = 0;
+int value_4 = 0;
+int value_5 = 0;
+int value_6 = 0;
+
+// góc xoay của servo lưu vào giá trị
+int goc_1 =0;
+int goc_2 =0;
+int goc_3 =0;
+int goc_4 =0;
+int goc_5 =0;
+int goc_6 =0;
+
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+Servo servo5;
+Servo servo6;
+
+
+void setup()
+{
+  Serial.begin(9600);
+  servo1.attach(servoPin_1);
+  servo2.attach(servoPin_2);
+  servo3.attach(servoPin_3);
+  servo4.attach(servoPin_4);
+  servo5.attach(servoPin_5);
+  servo6.attach(servoPin_6);
+}
+
+void loop()
+{
+  
+  value_1 = analogRead(A0);
+  goc_1 = map(value_1,0,1023,0,180);
+  servo1.write(goc_1);
+  
+  value_2 = analogRead(A1);
+  goc_2 = map(value_2,0,1023,0,180);
+  servo2.write(goc_2);
+  
+  value_3 = analogRead(A2);
+  goc_3 = map(value_3,0,1023,0,180);
+  servo3.write(goc_3);
+  
+  value_4 = analogRead(A3);
+  goc_4 = map(value_4,0,1023,0,180);
+  servo4.write(goc_4);
+  
+  value_5 = analogRead(A4);
+  goc_5 = map(value_5,0,1023,0,180);
+  servo5.write(goc_5);
+  
+  value_6 = analogRead(A5);
+  goc_6 = map(value_6,0,1023,0,180);
+  servo6.write(goc_6);
+  
+  Serial.print("Servo_1: "); Serial.println(goc_1); 
+  Serial.print("Servo_2: "); Serial.println(goc_2);
+  Serial.print("Servo_3: "); Serial.println(goc_3);
+  Serial.print("Servo_4: "); Serial.println(goc_4);
+  Serial.print("Servo_5: "); Serial.println(goc_5);
+  Serial.print("Servo_6: "); Serial.println(goc_6); 
+  delay(1000);
+}
